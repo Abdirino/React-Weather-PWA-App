@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="website icon" type="png" href="./src/Images/PWA weather.png" />
+    <link rel="website icon" type="png" href="./public/PWA weather.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App React PWA </title>
+    <title>Weather App React PWA</title>
   </head>
   <body>
     <div id="root"></div>
     <script defer type="module" src="/src/main.jsx"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./public/serviceWorker.js")
+            .then((reg) => console.log("success: ", reg.scope))
+            .catch((err)=> console.log("Failure: ", err))
+        });
+      }
+    </script>
   </body>
 </html>
